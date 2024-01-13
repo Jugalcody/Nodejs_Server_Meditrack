@@ -4,6 +4,11 @@ const router=express.Router();
 const User=require('../models/User');
 const bcryptjs=require('bcryptjs');
 
+router.get('/register',async(req,res,next)=>{
+res.json({
+"chalo bhai":"ho gya"
+});
+});
 router.post('/register',async (req,res,next)=>{
 
     const {username,email,password,place}=req.body;
