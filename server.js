@@ -22,7 +22,9 @@ app.use(express.json({
 }))
 
 connectDB();
-app.use('/api/patient/auth',require('./routes/user'));
+app.use('/api/patient/auth',require('./routes/patient'));
+app.use('/api/doctor/auth',require('./routes/doctor'));
+app.use('/api/patient/auth',require('./routes/auth'));
 const PORT=process.env.PORT || 3000;
 
 
