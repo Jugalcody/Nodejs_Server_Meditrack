@@ -2,16 +2,13 @@ const mongoose=require('mongoose');
 
 const userSchema=new mongoose.Schema({
     loggedAs:{
-        type:String,
-        required:true
+        type:String
     },
 username : {
-    type:String,
-    required:true
+    type:String
 },
 email:{
-    type:String,
-    required:true
+    type:String
 },
 password:{
     type:String,
@@ -22,36 +19,29 @@ type:String,
 required:true
 },
 dob:{
-    type:String,
-    required:true
+    type:String
 },
 gender:{
-type:String,
-required:true
+type:String
 },
 address:{
-    type:String,
-    required:true
+    type:String
 },
 speciality:{
-    type:String,
-    required:true
+    type:String
+
 },
 yoe:{
-    type:String,
-    required:true
+    type:String
 },
 qualification:{
-    type:String,
-    required:true
+    type:String
 },
 about:{
-    type:String,
-    required:true
+    type:String
 },
 clinic_hospital:{
-    type:Array,
-    required:true
+    type:Array
 }
 });
 
