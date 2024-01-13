@@ -1,7 +1,5 @@
 const express=require('express');
 const router=express.Router();
-
-const Doctor=require('../models/Doctor');
 const Patient=require('../models/Patient');
 const { Db } = require('mongodb');
 
@@ -15,32 +13,38 @@ else{
 }
 });
 });
-router.post('/log',async (req,res,next)=>{
+router.post('/auth',async (req,res,next)=>{
 
-    const {username,email,password,place}=req.body;
+    const {password,phone}=req.body;
     try{
     let patient_exist=await Patient.findOne({phone:phone});
-    let doctor_exist=await Doctor.findOne({phone:phone});
+    console.log(patient_exist.password);
+   // let doctor_exist=await Doctor.findOne({phone:phone});
     if(patient_exist){
+        if(patient_exist.password==password){
         res.json({
             success:true,
-            msg:"Patient logged in"
+            msg:"logged successfully"
         });
     }
-    else if(doctor_exist){
+    else{
         res.json({
-            success:true,
-            msg:"Doctor logged in"
-        }); 
+            success:false,
+            msg:"wrong password"
+        });
+    }
     }else{
     res.json({
         success:false,
-        msg:"failed"
+        msg:"user doesn't exists"
     })
 }
     }
     catch(err){
-        console.log(err);
+        res.json({
+            success:false,
+            msg:"user doesn't exists"
+        })
     }
 })
 

@@ -13,7 +13,7 @@ else{
 }
 });
 });
-router.post('/patient',async (req,res,next)=>{
+router.post('/register',async (req,res,next)=>{
 
     const {doctor_patient,username,email,password,phone,dob,gender,address}=req.body;
     try{
