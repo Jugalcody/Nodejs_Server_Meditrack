@@ -3,8 +3,8 @@ const router=express.Router();
 const Patient=require('../models/Patient');
 const { Db } = require('mongodb');
 
-router.get('/dat',async(req,res,next)=>{
-User.find((err,val)=>{
+router.get('/data',async(req,res,next)=>{
+Patient.find((err,val)=>{
 if(err){
     console.log(err);
 }
@@ -24,7 +24,12 @@ router.post('/auth',async (req,res,next)=>{
         if(patient_exist.password==password){
         res.json({
             success:true,
-            msg:"logged successfully"
+            msg:"logged successfully",
+            username:patient_exist.username,
+            email:patient_exist.email,
+            dob:patient_exist.dob,
+            gender:patient_exist.gender,
+            address:patient_exist.address
         });
     }
     else{
