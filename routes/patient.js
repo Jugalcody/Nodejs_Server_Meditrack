@@ -3,7 +3,7 @@ const router=express.Router();
 const User=require('../models/Patient');
 const { Db } = require('mongodb');
 
-router.get('/patientData',async(req,res,next)=>{
+router.get('/data',async(req,res,next)=>{
 User.find((err,val)=>{
 if(err){
     console.log(err);
@@ -24,6 +24,7 @@ router.post('/register',async (req,res,next)=>{
             msg:"User already exists"
         });
     }
+    else{
     let user=new User();
     user.loggedAs=doctor_patient;
     user.username=username;
@@ -40,6 +41,7 @@ router.post('/register',async (req,res,next)=>{
         msg:"user registered"
     })
     }
+}
     catch(err){
         console.log(err);
     }

@@ -3,7 +3,7 @@ const router=express.Router();
 const User=require('../models/Doctor');
 const { Db } = require('mongodb');
 
-router.get('/doctorData',async(req,res,next)=>{
+router.get('/data',async(req,res,next)=>{
 User.find((err,val)=>{
 if(err){
     console.log(err);
@@ -24,6 +24,7 @@ router.post('/register',async (req,res,next)=>{
             msg:"User already exists"
         });
     }
+    else{
     let user=new User();
     user.loggedAs=doctor_patient;
     user.username=username;
@@ -43,10 +44,59 @@ router.post('/register',async (req,res,next)=>{
         success:true,
         msg:"user registered"
     })
-    }
+    }}
     catch(err){
         console.log(err);
     }
-})
+});
+
+router.post('/auth',async (req,res,next)=>{
+
+    const {password,phone}=req.body;
+    try{
+    let doctor_exist=await Doctor.findOne({phone:phone});
+    console.log(doctor_exist.password);
+
+    if(doctor_exist){
+        if(doctor_exist.password==password){
+        res.json({
+            success:true,
+            msg:"logged successfully",
+            username:doctor_exist.username,
+            email:doctor_exist.email,
+            dob:doctor_exist.dob,
+            gender:doctor_exist.gender,
+            address:doctor_exist.address,
+            speciality:doctor_exist.speciality,
+            yoe:doctor_exist.yoe,
+            qualification:doctor_exist.qualification,
+            about:doctor_exist.about,
+            clinic_hospital:doctor_exist.clinic_hospital
+        });
+    }
+    else{
+        res.json({
+            success:false,
+            msg:"wrong password"
+        });
+    }
+    }else{
+    res.json({
+        success:false,
+        msg:"user doesn't exists"
+    })
+}
+    }
+    catch(err){
+        res.json({
+            success:false,
+            msg:"user doesn't exists"
+        })
+    }
+});
+
+
+
+
 
 module.exports=router;

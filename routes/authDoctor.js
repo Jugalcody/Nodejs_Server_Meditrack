@@ -3,16 +3,6 @@ const router=express.Router();
 const Doctor=require('../models/Doctor');
 const { Db } = require('mongodb');
 
-router.get('/data',async(req,res,next)=>{
-Doctor.find((err,val)=>{
-if(err){
-    console.log(err);
-}
-else{
-    res.json(val);
-}
-});
-});
 router.post('/auth',async (req,res,next)=>{
 
     const {password,phone}=req.body;
