@@ -5,10 +5,11 @@ const { Db } = require('mongodb');
 
 router.post('/auth',async (req,res,next)=>{
 
-    const {password,phone}=req.body;
+    const {phone,password}=req.body;
+    
     try{
     let doctor_exist=await Doctor.findOne({phone:phone});
-    console.log(doctor_exist.password);
+    console.log("password : "+doctor_exist.password);
 
     if(doctor_exist){
         if(doctor_exist.password==password){
@@ -36,14 +37,14 @@ router.post('/auth',async (req,res,next)=>{
     }else{
     res.json({
         success:false,
-        msg:"user doesn't exists"
+        msg:"user doesn't exists de"
     })
 }
     }
     catch(err){
         res.json({
             success:false,
-            msg:"user doesn't exists"
+            msg:"user doesn't exists baba"
         })
     }
 })
