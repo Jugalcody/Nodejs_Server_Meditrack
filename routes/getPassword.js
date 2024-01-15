@@ -3,8 +3,7 @@ const router=express.Router();
 const Patient=require('../models/Patient');
 const { Db } = require('mongodb');
 
-router.post('/getPassword',async (req,res,next)=>{
-
+router.post('/getPassword',async (req,res)=>{
     const {phone}=req.body;
     try{
     let patient_exist=await Patient.findOne({phone:phone});
