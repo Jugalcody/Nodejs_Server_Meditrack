@@ -30,18 +30,4 @@ router.post('/getotp',async (req,res)=>{
 );
 
 
-router.post('/getPassword',async (req,res)=>{
-   
-    
-    try{
-
-
-}
-    catch(err){
-        res.json({
-            success:false,
-            msg:"failed"
-        })
-    }
-})
 module.exports=router;
