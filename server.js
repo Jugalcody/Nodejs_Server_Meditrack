@@ -29,8 +29,7 @@ app.use('/api/patient',require('./routes/authPatient'));
 app.use('/api/patient',require('./routes/searchPatient'));
 app.use('/api/patient',require('./routes/patientPassword'));
 app.use('/api/doctor',require('./routes/doctorPassword'));
-app.use('/api',require('./routes/otp'));
-app.use('/api',require('./routes/otpsms'));
+app.use('/api/patient',require('./routes/updatePatient'));
 const PORT=process.env.PORT || 3000;
 
 
