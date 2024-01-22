@@ -30,6 +30,7 @@ app.use('/api/patient',require('./routes/searchPatient'));
 app.use('/api/patient',require('./routes/patientPassword'));
 app.use('/api/doctor',require('./routes/doctorPassword'));
 app.use('/api/patient',require('./routes/updatePatient'));
+app.use('/api/doctor',require('./routes/updateDoctor'));
 const PORT=process.env.PORT || 3000;
 
 
