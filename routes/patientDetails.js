@@ -1,9 +1,9 @@
 const express=require('express');
 const router=express.Router();
-const Patient=require('../models/Doctor');
+const Patient=require('../models/Patient');
 const { Db } = require('mongodb');
 
-router.post('/getPassword',async (req,res)=>{
+router.post('/getdetails',async (req,res)=>{
     const {phone}=req.body;
     try{
     let patient_exist=await Patient.findOne({phone:phone});
@@ -11,7 +11,13 @@ router.post('/getPassword',async (req,res)=>{
        
         res.json({
             success:true,
-          password:patient_exist.password
+            username:patient_exist.username,
+            email:patient_exist.email,
+          password:patient_exist.password,
+          phone:patient_exist.phone,
+          dob:patient_exist.dob,
+          gender:patient_exist.gender,
+          address:patient_exist.address
         });
     }else{
     res.json({
