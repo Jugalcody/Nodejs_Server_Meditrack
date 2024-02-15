@@ -3,11 +3,11 @@ const router=express.Router();
 const Patient=require('../models/Patient');
 const { Db } = require('mongodb');
 
-router.put('/addDoctor',async (req,res,next)=>{
+router.put('/addDoctor/:phone',async (req,res,next)=>{
 
     
     try{
-        const {phone,doctor}=req.params;
+        const {phone,doctoradd}=req.params;
     let patient_exist=await Patient.findOneAndUpdate({phone:phone},req.body,{new:true});
     res.json({success:true});
     }

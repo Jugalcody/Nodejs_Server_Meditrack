@@ -33,8 +33,8 @@ address:{
     type:String,
     
 },
-doctor:{
-    type:Object
+doctoradd:{
+    type:[mongoose.Schema.Types.Mixed]
 }
 });
 

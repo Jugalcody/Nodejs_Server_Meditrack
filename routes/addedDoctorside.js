@@ -3,7 +3,7 @@ const router=express.Router();
 const Doctor=require('../models/Doctor');
 const { Db } = require('mongodb');
 
-router.put('/addPatient',async (req,res,next)=>{
+router.put('/addPatient/:phone',async (req,res,next)=>{
 
     
     try{

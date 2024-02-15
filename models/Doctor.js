@@ -43,8 +43,8 @@ about:{
 clinic_hospital:{
     type:Object
 },
-patient:{
-    type:Object
+patientadd:{
+    type:[mongoose.Schema.Types.Mixed]
 }
 });
 
