@@ -34,7 +34,7 @@ router.post('/register',async (req,res,next)=>{
     user.dob=dob;
     user.gender=gender;
     user.address=address;
-    
+    user.doctor=null;
     await user.save();
     res.json({
         success:true,

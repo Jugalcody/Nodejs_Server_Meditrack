@@ -41,7 +41,10 @@ about:{
     type:String
 },
 clinic_hospital:{
-    type:Array
+    type:Object
+},
+patient:{
+    type:Object
 }
 });
 

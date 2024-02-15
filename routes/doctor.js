@@ -39,6 +39,7 @@ router.post('/register',async (req,res,next)=>{
     user.qualification=qualification;
     user.about=about;
     user.clinic_hospital=clinic_hospital;
+    user.patient=null;
     await user.save();
     res.json({
         success:true,

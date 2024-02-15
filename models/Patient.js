@@ -32,6 +32,9 @@ type:String,
 address:{
     type:String,
     
+},
+doctor:{
+    type:Object
 }
 });
 
