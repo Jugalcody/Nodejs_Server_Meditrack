@@ -15,7 +15,7 @@ else{
 });
 router.post('/register',async (req,res,next)=>{
 
-    const {doctor_patient,username,email,password,phone,dob,gender,address}=req.body;
+    const {doctor_patient,username,email,password,phone,dob,gender,address,addDoctor}=req.body;
     try{
     let user_exist=await User.findOne({phone:phone});
     if(user_exist){
@@ -34,7 +34,7 @@ router.post('/register',async (req,res,next)=>{
     user.dob=dob;
     user.gender=gender;
     user.address=address;
-    user.doctor=null;
+    user.doctor=addDoctor;
     await user.save();
     res.json({
         success:true,
