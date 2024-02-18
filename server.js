@@ -33,6 +33,10 @@ app.use('/api/patient',require('./routes/updatePatient'));
 app.use('/api/doctor',require('./routes/updateDoctor'));
 app.use('/api/doctor',require('./routes/addedDoctorside'));
 app.use('/api/patient',require('./routes/addedPatientside'));
+app.use('/api/doctor',require('./routes/updateDoctorside'));
+app.use('/api/patient',require('./routes/updatePatientside'));
+app.use('/api/patient',require('./routes/deletePatient'));
+app.use('/api/doctor',require('./routes/deleteDoctor'));
 const PORT=process.env.PORT || 3000;
 
 

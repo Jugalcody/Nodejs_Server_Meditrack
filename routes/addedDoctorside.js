@@ -7,15 +7,14 @@ router.put('/addPatient/:phone',async (req,res,next)=>{
 
     
     try{
-        const phone = req.params.phone; // Access phone from params
+        const phone = req.params.phone; 
         const patientadd = req.body;
         let doctor_exist = await Doctor.findOneAndUpdate(
             { phone: phone },
-            { $addToSet: { patientadd: patientadd } }, // Use $push to insert the new element into the array
-            { new: true } // Option to return the updated document
-        );
-    res.json({success:true,
-    doctoradd:doctor_exist.patientadd});
+            { $addToSet: { patientadd:patientadd}},
+            {new:true});
+             
+    res.json({success:true});
     }
     catch(err){
         res.json({
