@@ -17,7 +17,8 @@ router.post('/search',async (req,res,next)=>{
             email:patient_exist.email,
             dob:patient_exist.dob,
             gender:patient_exist.gender,
-            address:patient_exist.address
+            address:patient_exist.address,
+            doctoradd:patient_exist.doctoradd
         });
     }else{
     res.json({

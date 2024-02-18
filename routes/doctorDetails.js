@@ -17,7 +17,11 @@ router.post('/getDetails',async (req,res)=>{
           phone:patient_exist.phone,
           dob:patient_exist.dob,
           gender:patient_exist.gender,
-          address:patient_exist.address
+          address:patient_exist.address,
+          speciality:patient_exist.speciality,
+          qualification:patient_exist.qualification,
+          clinic_hospital:patient_exist.clinic_hospital,
+          patientadd:patient_exist.patientadd
         });
     }else{
     res.json({
