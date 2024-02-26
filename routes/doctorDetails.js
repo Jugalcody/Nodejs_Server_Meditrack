@@ -1,12 +1,12 @@
 const express=require('express');
 const router=express.Router();
-const Patient=require('../models/Doctor');
+const Doctor=require('../models/Doctor');
 const { Db } = require('mongodb');
 
 router.post('/getDetails',async (req,res)=>{
     const {phone}=req.body;
     try{
-    let patient_exist=await Patient.findOne({phone:phone});
+    let patient_exist=await Doctor.findOne({phone:phone});
     if(patient_exist){
        
         res.json({
@@ -17,11 +17,16 @@ router.post('/getDetails',async (req,res)=>{
           phone:patient_exist.phone,
           dob:patient_exist.dob,
           gender:patient_exist.gender,
-          address:patient_exist.address,
+          state:patient_exist.state,
+          city:paitent_exist.city,
           speciality:patient_exist.speciality,
           qualification:patient_exist.qualification,
           clinic_hospital:patient_exist.clinic_hospital,
-          patientadd:patient_exist.patientadd
+          patientadd:patient_exist.patientadd,
+         photo:patient_exist.photo,
+         photoid:patient_exist.photoid,
+         totalStar:patient_exist.totalStar,
+         reviews:patient_exist.reviews
         });
     }else{
     res.json({

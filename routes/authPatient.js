@@ -15,9 +15,14 @@ router.post('/auth',async (req,res,next)=>{
             msg:"logged successfully",
             username:patient_exist.username,
             email:patient_exist.email,
-            dob:patient_exist.dob,
-            gender:patient_exist.gender,
-            address:patient_exist.address
+          password:patient_exist.password,
+          phone:patient_exist.phone,
+          dob:patient_exist.dob,
+          gender:patient_exist.gender,
+          city:patient_exist.city,
+          state:patient_exist.state,
+          photo:patient_exist.photo,
+          doctoradd:patient_exist.doctoradd
         });
     }
     else{

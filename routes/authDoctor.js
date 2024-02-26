@@ -20,12 +20,18 @@ router.post('/auth',async (req,res,next)=>{
             email:doctor_exist.email,
             dob:doctor_exist.dob,
             gender:doctor_exist.gender,
-            address:doctor_exist.address,
+            state:doctor_exist.state,
+            city:doctor_exist.city,
             speciality:doctor_exist.speciality,
             yoe:doctor_exist.yoe,
             qualification:doctor_exist.qualification,
             about:doctor_exist.about,
-            clinic_hospital:doctor_exist.clinic_hospital
+            clinic_hospital:doctor_exist.clinic_hospital,
+            totalStar:doctor_exist.totalStar,
+            reviews:doctor_exist.reviews,
+            photo:doctor_exist.photo,
+            photoid:doctor_exist.photoid
+
         });
     }
     else{

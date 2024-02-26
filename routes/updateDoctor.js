@@ -7,7 +7,7 @@ router.put('/update/:phone',async (req,res,next)=>{
 
     
     try{
-        const {username,email,phone,address}=req.params;
+        const {phone}=req.params;
     let patient_exist=await Patient.findOneAndUpdate({phone:phone},req.body,{new:true});
     res.json({success:true});
     }

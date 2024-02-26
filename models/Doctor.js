@@ -1,4 +1,5 @@
 const mongoose=require('mongoose');
+const { float } = require('webidl-conversions');
 const userSchema=new mongoose.Schema({
     loggedAs:{
         type:String
@@ -23,8 +24,11 @@ dob:{
 gender:{
 type:String
 },
-address:{
+state:{
     type:String
+},
+city:{
+type:String
 },
 speciality:{
     type:String
@@ -44,6 +48,19 @@ clinic_hospital:{
 },
 patientadd:{
     type:[mongoose.Schema.Types.Mixed]
+    
+},
+totalStar:{
+type:String
+},
+reviews:{
+    type:[mongoose.Schema.Types.Mixed]
+},
+photo:{
+    type:String
+},
+photoid:{
+    type:String
 }
 });
 

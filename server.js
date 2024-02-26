@@ -37,6 +37,10 @@ app.use('/api/doctor',require('./routes/updateDoctorside'));
 app.use('/api/patient',require('./routes/updatePatientside'));
 app.use('/api/patient',require('./routes/deletePatient'));
 app.use('/api/doctor',require('./routes/deleteDoctor'));
+app.use('/api/doctor',require('./routes/searchDoctors'));
+app.use('/api/doctor',require('./routes/searchHospitals'));
+app.use('/api/doctor',require('./routes/updateReviews'));
+app.use('/api/doctor',require('./routes/updateTotalStar'));
 const PORT=process.env.PORT || 3000;
 
 

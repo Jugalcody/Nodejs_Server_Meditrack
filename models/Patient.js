@@ -29,12 +29,17 @@ gender:{
 type:String,
 
 },
-address:{
-    type:String,
-    
+state:{
+    type:String
+},
+city:{
+type:String
 },
 doctoradd:{
     type:[mongoose.Schema.Types.Mixed]
+},
+photo:{
+    type:String
 }
 });
 

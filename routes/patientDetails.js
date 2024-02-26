@@ -17,7 +17,9 @@ router.post('/getdetails',async (req,res)=>{
           phone:patient_exist.phone,
           dob:patient_exist.dob,
           gender:patient_exist.gender,
-          address:patient_exist.address,
+          city:patient_exist.city,
+          state:patient_exist.state,
+          photo:patient_exist.photo,
           doctoradd:patient_exist.doctoradd
         });
     }else{
