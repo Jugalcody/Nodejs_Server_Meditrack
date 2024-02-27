@@ -35,7 +35,7 @@ speciality:{
 
 },
 yoe:{
-    type:String
+    type:Number
 },
 qualification:{
     type:String
