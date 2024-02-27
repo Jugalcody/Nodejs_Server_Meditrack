@@ -16,7 +16,7 @@ router.post('/searchDoctors',async (req,res,next)=>{
     try{
 
         
-            let doctor_exist=await Doctor.find({ username: { $regex:".*"+username+".*",$options:'i' },speciality: { $regex:".*"+speciality+".*",$options:'i' },yoe:{ $regex:".*"+yoe+".*",$options:'i' },gender:{ $regex:gender+".*",$options:'i' },qualification:{ $regex:".*"+qualification+".*",$options:'i' },state:{ $regex:".*"+state+".*",$options:'i' },city:{ $regex:".*"+city+".*",$options:'i' }});
+            let doctor_exist=await Doctor.find({ username: { $regex:".*"+username+".*",$options:'i' },speciality: { $regex:".*"+speciality+".*",$options:'i' },yoe:{ $gte:Number(yoe)},gender:{ $regex:`^${gender}`,$options:'i' },qualification:{ $regex:".*"+qualification+".*",$options:'i' },state:{ $regex:".*"+state+".*",$options:'i' },city:{ $regex:".*"+city+".*",$options:'i' }});
 
             if(doctor_exist.length>0){
     res.json({

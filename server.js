@@ -4,11 +4,7 @@ const morgan=require('morgan');
 const connectDB=require('./config/db');
 
 const app=express();
-/*app.use((req,res,next)=>{    //middle ware is running
-    console.log("Middleware ran");
-    req.title="Rikesh";
-    next();
-})  */
+
 
 const dotenv=require('dotenv');
 dotenv.config({

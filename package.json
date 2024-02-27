@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Health Tracking System Api",
   "main": "server.js",
+
   "dependencies": {
     "abbrev": "^1.1.1",
     "accepts": "^1.3.8",
@@ -144,7 +145,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "Jugal-Rikesh",
   "license": "MIT",
