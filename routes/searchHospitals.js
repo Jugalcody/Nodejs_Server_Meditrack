@@ -12,11 +12,14 @@ router.post('/searchHospitals',async (req,res,next)=>{
     if(req.body.state) state=req.body.state;
     if(req.body.city) city=req.body.city;
     if(req.body.totalStar) totalStar=req.body.totalStar;
-
+    let hospital_exist;
     try{
-    
-            let hospital_exist=await Doctor.find({ 'clinic_hospital.hospital_clinic':{ $eq:hospital_clinic },'clinic_hospital.totalStar':{ $eq:totalStar },'clinic_hospital.name':{ $regex:".*"+name+".*",$options:'i' },'clinic_hospital.type':{ $regex:".*"+type+".*",$options:'i' },'clinic_hospital.state':{ $regex:".*"+state+".*",$options:'i' },'clinic_hospital.city':{ $regex:".*"+city+".*",$options:'i' }});
-
+    if(totalStar===""){
+        hospital_exist=await Doctor.find({ 'clinic_hospital.hospital_clinic':{ $eq:hospital_clinic },'clinic_hospital.name':{ $regex:".*"+name+".*",$options:'i' },'clinic_hospital.type':{ $regex:".*"+type+".*",$options:'i' },'clinic_hospital.state':{ $regex:".*"+state+".*",$options:'i' },'clinic_hospital.city':{ $regex:".*"+city+".*",$options:'i' }});
+    }
+    else{
+        hospital_exist=await Doctor.find({ 'clinic_hospital.hospital_clinic':{ $eq:hospital_clinic },'clinic_hospital.totalStar':{ $eq:totalStar },'clinic_hospital.name':{ $regex:".*"+name+".*",$options:'i' },'clinic_hospital.type':{ $regex:".*"+type+".*",$options:'i' },'clinic_hospital.state':{ $regex:".*"+state+".*",$options:'i' },'clinic_hospital.city':{ $regex:".*"+city+".*",$options:'i' }});
+    }
             if(hospital_exist.length>0){
     res.json({
 success:true,
