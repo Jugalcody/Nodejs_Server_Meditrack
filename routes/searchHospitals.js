@@ -19,7 +19,7 @@ router.post('/searchHospitals',async (req,res,next)=>{
             if(hospital_exist.length>0){
     res.json({
 success:true,
-data:hospital_exist
+data:hospital_exist.map(Doctor => Doctor.clinic_hospital)
         });
     }
         else {res.json({
