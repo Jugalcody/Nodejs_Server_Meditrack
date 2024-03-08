@@ -12,14 +12,14 @@ router.put('/addDoctor/:phone', async (req, res, next) => {
         const patientExist = await Patient.findOne({ phone: phone });
 
         if (!patientExist) {
-            return res.status(404).json({ success: false, msg: "Patient not found" });
+            return res.json({ success: false, msg: "Patient not found" });
         }
 
         // Check if the doctor with the specified phone number already exists in the doctoradd array
         const doctorExists = patientExist.doctoradd.some(doctor => doctor.phone === doctoradd.phone);
 
         if (doctorExists) {
-            return res.status(400).json({ success: false, msg: "Doctor already exists for this patient" });
+            return res.json({ success: false, msg: "Doctor already exists for this patient" });
         }
 
         // If the doctor doesn't exist, add it to the doctoradd array
@@ -32,7 +32,7 @@ router.put('/addDoctor/:phone', async (req, res, next) => {
         res.json({ success: true });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ success: false, msg: "Error" });
+        res.json({ success: false, msg: "Error" });
     }
 });
 
