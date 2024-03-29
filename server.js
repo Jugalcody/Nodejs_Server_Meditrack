@@ -40,7 +40,8 @@ app.use('/api/doctor',require('./routes/updateTotalStar'));
 app.use('/api/shristi',require('./routes/addParticipant'));
 app.use('/api/shristi',require('./routes/updateParticipant'));
 app.use('/api/shristi',require('./routes/deleteParticipant')); 
-const PORT=process.env.PORT || 3000;
+app.use('/api/shristi',require('./routes/getParticipant'));
+const PORT=process.env.PORT || 3000; 
 
 
 app.listen(3000,console.log(`Server is running on port : ${PORT}`.red.underline.bold));
