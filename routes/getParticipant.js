@@ -20,7 +20,7 @@ router.post('/getParticipants', async (req, res, next) => {
 
         if (!event) {
             return res.status(404).json({
-                success: false,
+                success: false, 
                 msg: "Event not found"
             });
         }
@@ -29,7 +29,7 @@ router.post('/getParticipants', async (req, res, next) => {
         const participants = event.participants;
 
         return res.json({
-            
+
             success: true,
             msg: "Participants retrieved successfully",
             participants: participants

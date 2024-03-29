@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/Shristi');
 
-router.delete('/delete', async (req, res, next) => {
+router.put('/delete', async (req, res, next) => {
     const { dept, eventName, phone } = req.body;
     try {
         let user = await User.findOne({ dept: dept });
@@ -49,7 +49,7 @@ router.delete('/delete', async (req, res, next) => {
         console.error(err);
         return res.status(500).json({
             success: false,
-            msg: "Internal server error"
+            msg: "Internal server error" 
         });
     }
 });
