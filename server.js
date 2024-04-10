@@ -41,6 +41,7 @@ app.use('/api/shristi',require('./routes/addParticipant'));
 app.use('/api/shristi',require('./routes/updateParticipant'));
 app.use('/api/shristi',require('./routes/deleteParticipant')); 
 app.use('/api/shristi',require('./routes/getParticipant'));
+app.use('/api/shristi',require('./routes/getEvents'));
 const PORT=process.env.PORT || 3000; 
 
 
