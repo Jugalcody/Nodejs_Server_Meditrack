@@ -4,10 +4,12 @@ const userSchema = new mongoose.Schema({
  
         event: [{
             name: String,
+            image:String,
             date: String,
+            time:String,
             desc:String,
             venue:String,
-            dept:String,
+            clubName:String,
         }]
 });
 
