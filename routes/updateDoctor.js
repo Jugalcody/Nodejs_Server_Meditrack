@@ -3,7 +3,7 @@ const router = express.Router();
 const Doctor = require('../models/Doctor');
 const Patient = require('../models/Patient');
 
-router.put('/updateDoctorEdit/:phone', async (req, res, next) => {
+router.put('/update/:phone', async (req, res, next) => {
     try {
         const { phone } = req.params;
 
