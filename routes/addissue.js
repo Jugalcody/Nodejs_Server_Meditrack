@@ -6,7 +6,7 @@ const { Db } = require('mongodb');
 
 router.post('/addissue',async (req,res,next)=>{
 
-    const {idno,sign,issueTitle,date}=req.body;
+    const {idno,sign,issueTitle}=req.body;
     const currentDate = new Date();
     const day = ('0' + currentDate.getDate()).slice(-2);
     const month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
@@ -14,6 +14,7 @@ router.post('/addissue',async (req,res,next)=>{
     const hour = ('0' + currentDate.getHours()).slice(-2);
     const minute = ('0' + currentDate.getMinutes()).slice(-2);
     const issueid = `${day}${month}${year}@${hour}${minute}`;
+    const date = `${day}/${month}/${year}`;
     try{
     let user_exist=await User.findOne({idno:idno});
     if(user_exist){
