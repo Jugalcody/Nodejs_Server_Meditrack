@@ -38,7 +38,7 @@ router.post('/addPrescription', async (req, res, next) => {
             pid: pid,
             note: note,
             medicine: medicine,
-            Test: test
+            test: test
         });
 
         // Save the updated user

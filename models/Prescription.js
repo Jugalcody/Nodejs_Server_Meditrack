@@ -27,7 +27,7 @@ required:true
                     end:String
                 }
             }],
-            Test : [{
+            test : [{
                 name:String,
                 status:String
             }]
