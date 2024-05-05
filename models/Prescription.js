@@ -13,19 +13,19 @@ required:true
     prescription: [{
            pid:String,
             note : String,
-            medicine : [{
+            medicine : [{ 
                 name:String,
-                dosage:[{
+                dosage:{
                     morning:String,
                     afternoon:String,
                     evening:String,
                     night:String
-                }],
+                },
                 quantity:String,
-                duration:[{
+                duration:{
                     start: String,
                     end:String
-                }]
+                }
             }],
             Test : [{
                 name:String,
