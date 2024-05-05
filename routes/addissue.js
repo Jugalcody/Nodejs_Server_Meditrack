@@ -18,9 +18,17 @@ router.post('/addissue',async (req,res,next)=>{
     try{
     let user_exist=await User.findOne({idno:idno});
     if(user_exist){
+
+       user_exist.issue.push({
+                date: date,
+                issueid: issueid,
+                issuetitle: issueTitle,
+                prescription: []
+            });
+            await user_exist.save();
         res.json({
-            success:false,
-            msg:"issue already exists"
+            success:true,
+            msg:"issue added to existing user"
         });
     }
     else{
