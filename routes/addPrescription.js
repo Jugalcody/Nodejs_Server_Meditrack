@@ -11,6 +11,7 @@ router.post('/addPrescription', async (req, res, next) => {
     const hour = ('0' + currentDate.getHours()).slice(-2);
     const minute = ('0' + currentDate.getMinutes()).slice(-2);
     const pid = `${hour}${minute}@${day}${month}${year}`;
+    const date = `${day}/${month}/${year}`;
 
     try {
         // Find the user by idno
@@ -38,7 +39,8 @@ router.post('/addPrescription', async (req, res, next) => {
             pid: pid,
             note: note,
             medicine: medicine,
-            test: test
+            test: test,
+            date:date
         });
 
         // Save the updated user

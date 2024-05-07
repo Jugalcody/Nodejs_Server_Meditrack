@@ -13,6 +13,7 @@ required:true
     prescription: [{
            pid:String,
             note : String,
+            date: String,
             medicine : [{ 
                 name:String,
                 dosage:{
