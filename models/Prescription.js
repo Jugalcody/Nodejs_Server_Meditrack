@@ -8,12 +8,14 @@ required:true
     sign:String,
     issue:[ {
         issuetitle : String,
-    date: String  ,
+    date: String,
+    time:String,
     issueid:String,
     prescription: [{
            pid:String,
             note : String,
             date: String,
+            time:String,
             medicine : [{ 
                 name:String,
                 dosage:{

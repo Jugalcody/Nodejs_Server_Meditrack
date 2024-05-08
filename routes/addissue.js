@@ -13,8 +13,10 @@ router.post('/addissue',async (req,res,next)=>{
     const year = currentDate.getFullYear();
     const hour = ('0' + currentDate.getHours()).slice(-2);
     const minute = ('0' + currentDate.getMinutes()).slice(-2);
-    const issueid = `${day}${month}${year}@${hour}${minute}`;
+    const sec = ('0' + currentDate.getSeconds()).slice(-2);
+    const issueid = `${day}${month}${year}@${hour}${minute}${sec}`;
     const date = `${day}/${month}/${year}`;
+    const time=`${hour}:${minute}:${sec}`
     try{
     let user_exist=await User.findOne({idno:idno});
     if(user_exist){
@@ -37,6 +39,7 @@ router.post('/addissue',async (req,res,next)=>{
             sign: sign,
             issue: [{
                 date:date,
+                time:time,
                 issueid:issueid,
                 issuetitle: issueTitle,
                 prescription: [] 

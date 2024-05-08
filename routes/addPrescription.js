@@ -10,8 +10,10 @@ router.post('/addPrescription', async (req, res, next) => {
     const year = currentDate.getFullYear();
     const hour = ('0' + currentDate.getHours()).slice(-2);
     const minute = ('0' + currentDate.getMinutes()).slice(-2);
-    const pid = `${hour}${minute}@${day}${month}${year}`;
+    const sec = ('0' + currentDate.getSeconds()).slice(-2);
+    const pid = `${hour}${minute}${sec}@${day}${month}${year}`;
     const date = `${day}/${month}/${year}`;
+    const time=`${hour}:${minute}:${sec}`;
 
     try {
         // Find the user by idno
@@ -37,6 +39,7 @@ router.post('/addPrescription', async (req, res, next) => {
         // Add prescription to the issue
         user.issue[issueIndex].prescription.push({
             pid: pid,
+            time:time,
             note: note,
             medicine: medicine,
             test: test,
