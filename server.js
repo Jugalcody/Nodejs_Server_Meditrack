@@ -34,6 +34,7 @@ app.use('/api/patient',require('./routes/updatePatientside'));
 app.use('/api/issue',require('./routes/addissue'));
 app.use('/api/issue',require('./routes/getissue'));
 app.use('/api/issue',require('./routes/getPrescription'));
+app.use('/api/issue',require('./routes/updatePrescription'));
 app.use('/api/issue',require('./routes/getPrescription2'));
 app.use('/api/issue',require('./routes/addPrescription'));
 app.use('/api/patient',require('./routes/deletePatient'));
