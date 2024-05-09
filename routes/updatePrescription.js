@@ -52,7 +52,7 @@ router.post('/updatePrescription', async (req, res, next) => {
         } else {
             // Add new prescription to the issue
             user.issue[issueIndex].prescription.push({
-                pid: newPid,
+                pid: pid,
                 time: time,
                 note: note,
                 medicine: medicine,
