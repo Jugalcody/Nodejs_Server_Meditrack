@@ -26,7 +26,8 @@ router.post('/getDetails',async (req,res)=>{
          photo:patient_exist.photo,
          photoid:patient_exist.photoid,
          totalStar:patient_exist.totalStar,
-         reviews:patient_exist.reviews
+         reviews:patient_exist.reviews,
+         sign:patient_exist.sign
         });
     }else{
     res.json({

@@ -30,7 +30,8 @@ router.post('/auth',async (req,res,next)=>{
             totalStar:doctor_exist.totalStar,
             reviews:doctor_exist.reviews,
             photo:doctor_exist.photo,
-            photoid:doctor_exist.photoid
+            photoid:doctor_exist.photoid,
+            sign:doctor_exist.sign
 
         });
     }

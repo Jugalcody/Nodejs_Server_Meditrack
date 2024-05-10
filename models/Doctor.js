@@ -62,6 +62,9 @@ photo:{
 },
 photoid:{
     type:String
+},
+sign:{
+    type:String
 }
 });
 

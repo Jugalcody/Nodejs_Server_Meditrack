@@ -15,7 +15,7 @@ else{
 });
 router.post('/register',async (req,res,next)=>{
 
-    const {doctor_patient,username,email,password,phone,dob,gender,state,city,speciality,yoe,qualification,about,clinic_hospital,addPatient,photo,photoid,totalStar,reviews}=req.body;
+    const {doctor_patient,username,email,password,phone,dob,gender,state,city,speciality,yoe,qualification,about,clinic_hospital,addPatient,photo,photoid,totalStar,reviews,sign}=req.body;
     try{
     let user_exist=await User.findOne({phone:phone});
     if(user_exist){
@@ -45,6 +45,7 @@ router.post('/register',async (req,res,next)=>{
     user.photoid=photoid
     user.totalStar=totalStar;
     user.reviews=reviews;
+    user.sign=sign;
     await user.save();
     res.json({
         success:true,
