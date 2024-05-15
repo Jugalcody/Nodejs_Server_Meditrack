@@ -9,6 +9,8 @@ router.post('/updateTaken', async (req, res, next) => {
         // Find the user by idno
         let user = await User.findOne({ idno: idno });
 
+        console.log('user:', user);
+
         if (!user) {
             return res.json({
                 success: false,
@@ -18,6 +20,8 @@ router.post('/updateTaken', async (req, res, next) => {
 
         // Find the index of the issue with the specified issueId
         const issueIndex = user.issue.findIndex(issue => issue.issueid === issueid);
+
+        console.log('issueIndex:', issueIndex);
 
         if (issueIndex === -1) {
             return res.json({
@@ -29,6 +33,8 @@ router.post('/updateTaken', async (req, res, next) => {
         // Find the prescription with the specified prescriptionId
         const prescription = user.issue[issueIndex].prescription.find(presc => presc.pid === prescriptionId);
 
+        console.log('prescription:', prescription);
+
         if (!prescription) {
             return res.json({
                 success: false,
@@ -36,8 +42,18 @@ router.post('/updateTaken', async (req, res, next) => {
             });
         }
 
+        // Check if medicine is defined
+        if (!prescription.medicine || !Array.isArray(prescription.medicine)) {
+            return res.json({
+                success: false,
+                msg: "Medicine not found or not properly defined in the prescription"
+            });
+        }
+
         // Find the medicine with the specified medid
         const medicineIndex = prescription.medicine.findIndex(med => med.medid === medid);
+
+        console.log('medicineIndex:', medicineIndex);
 
         if (medicineIndex === -1) {
             return res.json({
@@ -46,8 +62,11 @@ router.post('/updateTaken', async (req, res, next) => {
             });
         }
 
-        // Increment the 'taken' field by 1
-        user.issue[issueIndex].prescription[prescriptionId].medicine[medicineIndex].taken++;
+        // Print the current value of 'taken'
+        console.log('Current taken:', prescription.medicine[medicineIndex].taken);
+
+        // Convert 'taken' from string to integer, increment, then convert back to string
+        prescription.medicine[medicineIndex].taken = String(parseInt(prescription.medicine[medicineIndex].taken, 10) + 1);
 
         // Save the updated user
         await user.save();
