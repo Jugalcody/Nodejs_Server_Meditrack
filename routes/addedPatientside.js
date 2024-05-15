@@ -22,7 +22,7 @@ router.put('/addDoctor/:phone', async (req, res, next) => {
             return res.json({ success: false, msg: "Doctor already exists for this patient" });
         }
 
-        // If the doctor doesn't exist, add it to the doctoradd array
+        // If the doctor doesn't exist  , add it to the doctoradd array
         await Patient.findOneAndUpdate(
             { phone: phone },
             { $addToSet: { doctoradd: doctoradd } },

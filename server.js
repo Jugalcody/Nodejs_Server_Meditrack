@@ -31,6 +31,7 @@ app.use('/api/doctor',require('./routes/addedDoctorside'));
 app.use('/api/patient',require('./routes/addedPatientside'));
 app.use('/api/doctor',require('./routes/updateDoctorside'));    
 app.use('/api/patient',require('./routes/updatePatientside'));
+app.use('/api/patient',require('./routes/addmedtaken'));
 app.use('/api/issue',require('./routes/addissue'));
 app.use('/api/issue',require('./routes/deletePrescription'));
 app.use('/api/issue',require('./routes/getissue'));

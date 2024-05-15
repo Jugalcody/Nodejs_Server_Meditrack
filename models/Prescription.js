@@ -17,7 +17,9 @@ required:true
             date: String,
             time:String,
             medicine : [{ 
+                medid:String,
                 name:String,
+                taken:String,
                 dosage:{
                     morning:String,
                     afternoon:String,
