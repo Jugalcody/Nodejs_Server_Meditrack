@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../models/Prescription');
 
 router.post('/updateTaken', async (req, res, next) => {
-    const { idno, issueid, prescriptionId, medid } = req.body;
+    const { idno, issueid, prescriptionId, medid ,date} = req.body;
 
     try {
         // Find the user by idno
@@ -65,9 +65,27 @@ router.post('/updateTaken', async (req, res, next) => {
         // Print the current value of 'taken'
         console.log('Current taken:', prescription.medicine[medicineIndex].taken);
 
-        // Convert 'taken' from string to integer, increment, then convert back to string
-        prescription.medicine[medicineIndex].taken = String(parseInt(prescription.medicine[medicineIndex].taken, 10) + 1);
+        // Update 'taken' and add current date
+        const medicine = prescription.medicine[medicineIndex];
 
+        console.log('medicine:', medicine);
+
+        if (!medicine) {
+            return res.json({
+                success: false,
+                msg: "Medicine not found in the prescription"
+            });
+        }
+
+        // Convert 'taken' from string to integer, increment, then convert back to string
+        
+        const currentDate = new Date();
+        const day = ('0' + currentDate.getDate()).slice(-2);
+        const month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+        const year = currentDate.getFullYear();
+        const date = `${day}/${month}/${year}`;
+        
+        medicine.taken = String(parseInt(medicine.taken, 10) + 1)+"@"+date;
         // Save the updated user
         await user.save();
 
