@@ -44,14 +44,14 @@ router.post('/auth',async (req,res,next)=>{
     }else{
     res.json({
         success:false,
-        msg:"user doesn't exists de"
+        msg:"user doesn't exists"
     })
 }
     }
     catch(err){
         res.json({
             success:false,
-            msg:"user doesn't exists baba"
+            msg:"user doesn't exists"
         })
     }
 })

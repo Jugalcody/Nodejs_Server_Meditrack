@@ -33,6 +33,8 @@ app.use('/api/doctor',require('./routes/updateDoctorside'));
 app.use('/api/patient',require('./routes/updatePatientside'));
 app.use('/api/patient',require('./routes/addmedtaken'));
 app.use('/api/issue',require('./routes/addissue'));
+app.use('/api/assistant',require('./routes/authAssistant'));
+app.use('/api/assistant',require('./routes/addAssistant'));
 app.use('/api/issue',require('./routes/deletePrescription'));
 app.use('/api/issue',require('./routes/getissue'));
 app.use('/api/issue',require('./routes/deleteIssue'));
