@@ -27,6 +27,7 @@ router.put('/addStar/:phone',async (req,res,next)=>{
 
 function change(newstar,oldstar,total_reacted){
 
+    
     let avgstar=((oldstar+newstar)/((total_reacted)*5))*5;
 
     return avgstar;

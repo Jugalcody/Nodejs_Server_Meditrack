@@ -48,6 +48,8 @@ app.use('/api/doctor',require('./routes/searchDoctors'));
 app.use('/api/doctor',require('./routes/searchHospitals'));
 app.use('/api/doctor',require('./routes/updateReviews'));
 app.use('/api/doctor',require('./routes/updateTotalStar'));
+app.use('/api/doctor',require('./routes/updatedoctorphone'));
+app.use('/api/patient',require('./routes/updatepatientphone'));
 app.use('/api/shristi',require('./routes/addParticipant'));
 app.use('/api/shristi',require('./routes/updateParticipant'));
 app.use('/api/shristi',require('./routes/deleteParticipant')); 
