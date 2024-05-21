@@ -1,31 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const Doctor = require('../models/Doctor');
+const Patient = require('../models/Patient');
 
 router.put('/updatepending/:phone', async (req, res, next) => {
     try {
         const phone = req.params.phone; 
-        const patientData = req.body;
+        const doctorData = req.body;
 
-        let doctorExist = await Doctor.findOne({ phone: phone });
+        let patientExist = await Patient.findOne({ phone: phone });
 
-        if (!doctorExist) {
-            return res.status(404).json({ success: false, msg: "Doctor not found" });
+        if (!patientExist) {
+            return res.status(404).json({ success: false, msg: "Patient not found" });
         }
 
-        const patientIndex = doctorExist.patientadd.findIndex(patient => patient.phone === patientData.phone);
+        const doctorIndex = patientExist.doctoradd.findIndex(doctor => doctor.phone === doctorData.phone);
 
-        if (patientIndex === -1) {
-            return res.status(404).json({ success: false, msg: "No patient found" });
+        if (doctorIndex === -1) {
+            return res.status(404).json({ success: false, msg: "No doctor found" });
         }
 
-        if (patientData.pending === "delete") {
-        
-            await doctorExist.updateOne({ $pull: { patientadd: { phone: patientData.phone } } });
+        if (doctorData.pending === "delete") {
+            await patientExist.updateOne({ $pull: { doctoradd: { phone: doctorData.phone } } });
         } else {
-           
-            doctorExist.patientadd[patientIndex] = patientData;
-            await doctorExist.save();
+            patientExist.doctoradd[doctorIndex] = doctorData;
+            await patientExist.save();
         }
 
         res.json({ success: true });

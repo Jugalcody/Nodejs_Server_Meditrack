@@ -1,34 +1,32 @@
 const express = require('express');
 const router = express.Router();
-const Doctor = require('../models/Doctor');
+const Patient = require('../models/Patient');
 const { Db } = require('mongodb');
 
-router.put('/addPatient/:phone', async (req, res, next) => {
+router.put('/addDoctor/:phone', async (req, res, next) => {
     try {
-        const phone = req.params.phone;
-        const patientadd = req.body;
+        const phone = req.params.phone; // Patient's phone number
+        const doctoradd = req.body; // Contains the doctor details to add
 
-        // Check if the doctor with the given phone number already exists
-        let doctor_exist = await Doctor.findOne({ phone: phone });
+        // Check if the patient with the specified phone number exists
+        const patientExist = await Patient.findOne({ phone: phone });
 
-        if (!doctor_exist) {
-            // If the doctor does not exist, return an error
-            return res.json({ success: false, msg: "Doctor not found" });
+        if (!patientExist) {
+            return res.json({ success: false, msg: "Patient not found" });
         }
 
-        // Check if the patient's phone number already exists in the patientadd array
-        const patientExists = doctor_exist.patientadd.some(patient => patient.phone === patientadd.phone);
+        // Check if the doctor with the specified phone number already exists in the doctoradd array
+        const doctorExists = patientExist.doctoradd.some(doctor => doctor.phone === doctoradd.phone);
 
-        if (patientExists) {
-            // If the patient already exists, return an error
-            return res.json({ success: false, msg: "Patient already exists for this doctor" });
+        if (doctorExists) {
+            return res.json({ success: false, msg: "Doctor already exists for this patient" });
         }
 
-        // Add the patient to the patientadd array for the doctor
-        doctor_exist.patientadd.push(patientadd);
-        
-        // Save the updated doctor document
-        await doctor_exist.save();
+        // Add the doctor to the doctoradd array for the patient
+        patientExist.doctoradd.push(doctoradd);
+
+        // Save the updated patient document
+        await patientExist.save();
 
         res.json({ success: true });
     } catch (err) {

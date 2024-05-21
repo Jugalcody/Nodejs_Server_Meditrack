@@ -1,31 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const Patient = require('../models/Patient');
+const Doctor = require('../models/Doctor');
 const { Db } = require('mongodb');
 
-router.put('/addDoctor/:phone', async (req, res, next) => {
+router.put('/addPatient/:phone', async (req, res, next) => {
     try {
-        const phone = req.params.phone;
-        const doctoradd = req.body;
+        const phone = req.params.phone; // Doctor's phone number
+        const patientadd = req.body; // Contains the patient details to add
 
-        // Check if the patient with the specified phone number exists
-        const patientExist = await Patient.findOne({ phone: phone });
+        // Check if the doctor with the specified phone number exists
+        const doctorExist = await Doctor.findOne({ phone: phone });
 
-        if (!patientExist) {
-            return res.json({ success: false, msg: "Patient not found" });
+        if (!doctorExist) {
+            return res.json({ success: false, msg: "Doctor not found" });
         }
 
-        // Check if the doctor with the specified phone number already exists in the doctoradd array
-        const doctorExists = patientExist.doctoradd.some(doctor => doctor.phone === doctoradd.phone);
+        // Check if the patient with the specified phone number already exists in the patientadd array
+        const patientExists = doctorExist.patientadd.some(patient => patient.phone === patientadd.phone);
 
-        if (doctorExists) {
-            return res.json({ success: false, msg: "Doctor already exists for this patient" });
+        if (patientExists) {
+            return res.json({ success: false, msg: "Patient already exists for this doctor" });
         }
 
-        // If the doctor doesn't exist  , add it to the doctoradd array
-        await Patient.findOneAndUpdate(
+        // If the patient doesn't exist, add it to the patientadd array
+        await Doctor.findOneAndUpdate(
             { phone: phone },
-            { $addToSet: { doctoradd: doctoradd } },
+            { $addToSet: { patientadd: patientadd } },
             { new: true }
         );
 
